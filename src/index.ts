@@ -27,13 +27,14 @@ async function main() {
   console.log("🔍 Testando dados migrados para Redis...\n");
   await funcoesMigracao.migrarTudo();
 
+  // Consultar dados migrados
   await funcoesMigracao.listarBranches();
   await funcoesMigracao.listarProdutos();
   await funcoesMigracao.buscarFuncionarioPorId(1);
   await funcoesMigracao.buscarContasPorClienteId(1);
   await funcoesMigracao.listarOfficersDeEmpresa(10);
 
-    // 3. Atualizar uma branch
+    // Atualizar uma branch
     console.log("\n--- Testando atualização de Branch ---");
     const updatedBranch = await funcoesMigracao.atualizarBranch(1, { name: 'Nova Sede Global', city: 'Vila Velha', state: 'ES' });
     if (updatedBranch) {
@@ -41,7 +42,7 @@ async function main() {
     }
     await funcoesMigracao.listarBranches();
 
-    // 4. Buscar e atualizar um funcionário
+    // Buscar e atualizar um funcionário
     console.log("\n--- Testando atualização de Funcionário ---");
     await funcoesMigracao.buscarFuncionarioPorId(7);
     const updatedEmployee = await funcoesMigracao.atualizarEmployee(7, { title: 'Teller Sênior' });
@@ -50,7 +51,7 @@ async function main() {
     }
     await funcoesMigracao.buscarFuncionarioPorId(7);
 
-    // 5. Deletar uma branch
+    // Deletar uma branch
     console.log("\n--- Testando deleção de Branch ---");
     const deleted = await funcoesMigracao.deletarBranch(4);
     if (deleted) {
