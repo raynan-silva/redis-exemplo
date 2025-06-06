@@ -1,7 +1,7 @@
 import Redis from "ioredis";
 import { v4 as uuid } from "uuid";
 
-const redis = new Redis({ host: "redis", port: 6379 });
+const redis = new Redis({ host: process.env.REDIS_HOST || "redis", port: 6379 });
 
 // CLIENTE
 
